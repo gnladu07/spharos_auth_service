@@ -24,7 +24,7 @@ public class AuthDomain {
         // email 중복체크 and validate
         // password 암호화 and validate
         // phone 중복체크 and validate
-        validateLoginId();
+        validateLoginId(loginId);
         return AuthDomain.builder()
                 .userId(UUID.randomUUID().toString())
                 .loginId(loginId.trim())
@@ -35,7 +35,7 @@ public class AuthDomain {
                 .build();
     }
 
-    private static void validateLoginId() throws Exception {
+    private static void validateLoginId(String loginId) throws Exception {
         if(loginId == null || loginId.isBlank()) {
             throw new Exception("login Id 는 필수입니다.");
         }
